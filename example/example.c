@@ -7,6 +7,12 @@ int cidade_inicial = 2;
 
 int peso[4][4] = { {999,3,5,4}, {3,999,8,6}, {5,8,999, 1}, {4, 6, 1, 999} };
 
+void troca(int* valor1, int* valor2) {
+	int tmp = *valor1;
+	*valor1 = *valor2;
+	*valor2 = tmp;
+}
+
 int main() {
 	int i = 1, j, k;
 	int menor_peso = 999;
