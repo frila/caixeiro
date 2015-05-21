@@ -16,41 +16,28 @@ void troca(int* valor1, int* valor2) {
 int main() {
 	int i = 1, j, k;
 	int menor_peso = 999;
+	int* caminho_resposta = caminho;
 
+	//poe a cidade de partida como a cidade inicial
 	caminho[0] = cidade_inicial;
 	caminho[cidade_inicial] = 0;
 
 	while (i < NCIDADES) {
-		for(j = 1; j < NCIDADES; j++) {
-			if(j == NCIDADES - 1) {
-				int tmp;
-				tmp = caminho[j];
-				caminho[j] = caminho[1];
-				caminho[1] = tmp;			
-			} else {
-				int tmp;
-				tmp = caminho[j];
-				caminho[j] = caminho[j+1];
-				caminho[j+1] = tmp;
-			}
-			int peso_total = 0;
-			for(k = 0; k < NCIDADES; k++) {
-				if(k == NCIDADES - 1) { 
-					peso_total += peso[caminho[k]][caminho[0]];
-					printf("] ===> peso_total: %d\n", peso_total);
-					if(peso_total < menor_peso) { 
-						menor_peso = peso_total;
-					}
-				} 
-				else { 
-					peso_total += peso[caminho[k]][caminho[k+1]];
-					printf("%d", caminho[k]);
-				}
-			}
-			printf("\n");
-		}
+		for(j = 1; j < NCIDADES; j++) j != NCIDADES - 1 ? troca(&caminho[j], &caminho[j+1]) : troca(&caminho[j], &caminho[1]);
+
+		int peso_caminho = 0;
+		for(k = 0; k < NCIDADES; k++) k != NCIDADES -1 ? (peso_caminho += peso[caminho[k]][caminho[k+1]]) : (peso_caminho += peso[caminho[k]][caminho[0]]);
+
+		if (peso_caminho < menor_peso) { menor_peso = peso_caminho; caminho_resposta = caminho; }
+
 		i++;
 	}
 
-	printf("%d\n", menor_peso);
+	printf("menor peso: %d\n", menor_peso);
+
+	printf("caminho resposta: [ ");
+	for(k = 0; k < NCIDADES; k++) {
+		printf("%d ", caminho_resposta[k]);
+	}
+	printf("]\n");
 }
