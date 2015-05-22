@@ -14,6 +14,6 @@ distance_table rd_distance(int ncities);
 void pt_betterpath(tour t, city start_city, int ncities, distance low_distance);
 
 // Read parameters to terminal
-void get_input(int argc, char* argv[], int* ncities, int* start_city);
+void get_input(int argc, char* argv[], int* ncities, int* start_city, int *nthreads);
 
 #endif //CAIXEIRO_RDWT_H

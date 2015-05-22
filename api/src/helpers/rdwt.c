@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <string.h>
+#include <errno.h>
 
 #include "rdwt.h"
 
@@ -34,12 +35,27 @@ void pt_betterpath(tour t, city start_city, int ncities, distance low_distance){
 }
 
 
-void get_input(int argc, char* argv[], int* ncities, city* start_city) {
+void get_input(int argc, char* argv[], int* ncities, city* start_city, int *nthreads) {
 	char a;
-	while((a = getopt(argc, argv, "n:s:")) != -1) {
+	while((a = getopt(argc, argv, "n:s:t:")) != -1) {
 		switch(a) {
 		case 'n': *ncities 		= atoi(optarg); break;
 		case 's': *start_city 	= atoi(optarg); break;
+		case 't': if ( nthreads ) *nthreads = atoi(optarg); break;
 		}
 	}
+
+    if ( start_city < 0 || start_city >= ncities ){
+        perror("Número da cidade inicial inválido");
+        exit(1);
+    }
+
+    if ( nthreads ){
+        if ( nthreads < 0 || nthreads >= ncities ){
+            perror("Número de threads inválido");
+            exit(1);
+        }
+    }
+
+
 }
