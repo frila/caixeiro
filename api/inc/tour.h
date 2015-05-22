@@ -20,7 +20,7 @@ void start_point(tour t, city c);
 
 //retorna true se a distancia total do
 //tour t for menor que dist
-int is_shoter(tour t, int dist);
+int is_shorter(tour t, distance_table dists, int incities, distance dist);
 
 //inverte a posição de duas cidades no tour
 void swap_cities(tour t, int c1, int c2);
