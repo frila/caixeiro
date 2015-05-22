@@ -34,7 +34,7 @@ void pt_betterpath(tour t, city start_city, int ncities, distance low_distance){
 }
 
 
-void get_input(int argc, char* argv[], int* ncities, int* start_city) {
+void get_input(int argc, char* argv[], int* ncities, city* start_city) {
 	char a;
 	while((a = getopt(argc, argv, "n:s:")) != -1) {
 		switch(a) {
