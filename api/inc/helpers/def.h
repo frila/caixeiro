@@ -5,6 +5,8 @@
 #ifndef CAIXEIRO_DEF_H
 #define CAIXEIRO_DEF_H
 
-
+#ifndef INF
+#define INF 999999
+#endif
 
 #endif //CAIXEIRO_DEF_H
