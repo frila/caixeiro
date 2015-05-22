@@ -5,10 +5,10 @@
 #include <stdlib.h>
 #include "rdwt.h"
 
-distance rd_distance(int ncities){
+distance_table rd_distance(int ncities){
     int i,j;
-    int *vector_allocated = (int*) malloc (sizeof(int) * ncities * ncities);
-    distance vector = (distance) malloc (sizeof(int*) * ncities);
+    distance *vector_allocated = (distance*) malloc (sizeof(distance) * ncities * ncities);
+    distance_table vector = (distance_table) malloc (sizeof(distance*) * ncities);
 
     for(i = 0; i < ncities; i++){
         vector[i] = vector_allocated + i * ncities ;
