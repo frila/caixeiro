@@ -6,9 +6,13 @@
 #define CAIXEIRO_RDWT_H
 
 #include "tour.h"
+#include <unistd.h>
+#include <ctype.h>
+#include <string.h>
+
 
 // Lê as distancias entre as cidades da entrada padrão
 distance_table rd_distance(int ncities);
-
+void get_input(int argc, char* argv[], int* ncities, int* start_city);
 
 #endif //CAIXEIRO_RDWT_H

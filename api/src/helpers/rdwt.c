@@ -18,3 +18,14 @@ distance_table rd_distance(int ncities){
 
     return vector;
 }
+
+
+void get_input(int argc, char* argv[], int* ncities, int* start_city) {
+	char a;
+	while((a = getopt(argc, argv, "n:s:")) != -1) {
+		switch(a) {
+		case 'n': *ncities 		= atoi(optarg); break;
+		case 's': *start_city 	= atoi(optarg); break;
+		}
+	}
+}
