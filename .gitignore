@@ -3,3 +3,5 @@
 ignored/*
 example/example
 example/example_serial
+bin/*
+obj/*
