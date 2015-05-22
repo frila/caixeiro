@@ -3,6 +3,10 @@
 //
 
 #include <stdlib.h>
+#include <unistd.h>
+#include <ctype.h>
+#include <string.h>
+
 #include "rdwt.h"
 
 distance_table rd_distance(int ncities){
