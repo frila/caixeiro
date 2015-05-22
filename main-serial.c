@@ -13,7 +13,7 @@ void traveling_salesman( tour path, int k, int ncities, distance_table t_distanc
         aggregate += t_distance[path[k-1]][path[0]];
         if ( *low_distance > aggregate) {
             *low_distance = aggregate;
-            memcpy(better_path, path, sizeof(int)*ncities);
+            memcpy(better_path, path, sizeof(city)*ncities);
         }
 
     } else {
