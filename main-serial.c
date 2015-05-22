@@ -32,20 +32,15 @@ void traveling_salesman( tour path, int k, int ncities, distance_table t_distanc
 int main(int argc, char* argv[]){
 
     city start_city;
-    int ncities = 0, j;
+    int ncities = 0;
     distance low_distance = INF;
     distance_table t_distance;
     tour path, better_path;
 
-    char a;
-    while((a = getopt(argc, argv, "n:s:")) != -1) {
-        switch(a) {
-            case 'n': rd_distance = atoi(optarg); break;
-            case 's': start_city  = atoi(optarg); break;
-        }
-    }
+    get_input(argc, argv, &ncities, &start_city);
 
     path = create_tour(ncities);
+
     better_path = create_tour(ncities);
 
     populate_tour(path,ncities);
@@ -56,12 +51,7 @@ int main(int argc, char* argv[]){
 
     traveling_salesman(path,1,ncities, t_distance, 0, better_path, &low_distance);
 
-    printf("caminho resposta: [ ");
-    for(j = 0; j < ncities; j++) {
-        printf("%d ", better_path[j]);
-    }
-    printf("%d ]\n", start_city);
-    printf("menor peso %d\n", low_distance);
+    pt_betterpath(better_path, start_city, ncities, low_distance);
 
     return 0;
 }
