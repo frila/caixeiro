@@ -13,12 +13,12 @@ tour create_tour(int ncities);
 //popula um tour pre-definido com cidades
 void populate_tour(tour t, int ncities);
 
+//define a cidade inicial de um tour
+void start_point(tour t, city c);
+
 //retorna true se a distancia total do
 //tour t for menor que dist
 int is_shoter(tour t, int dist);
-
-//define a cidade inicial de um tour
-void start_point(tour t, city c);
 
 //inverte a posição de duas cidades no tour
 void swap_cities(tour t, int c1, int c2);
