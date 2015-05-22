@@ -4,18 +4,7 @@
 
 A API implementa alguns métodos para resolver o problema do caixeiro viajante
 
-### tour.h
-
-#### defines
-
-Esse arquivo define um tour e uma cidade
-
-````c
-#define tour int*
-#define city int
-````
-
-#### Funções
+### Funções
 
 Temos dois arquivos que definem alguns **helpers** para darem suporte aos algoritmos
 
@@ -62,11 +51,12 @@ void pt_betterpath(tour t, city start_city, int ncities, distance low_distance);
 void get_input(int argc, char* argv[], int* ncities, int* start_city);
 ````
 
-#### Algoritmos
+### Algoritmos
 
-##### Serial
-DESCRIÇÂO
+#### Serial
 
+O objetivo do algoritmo é permutar o entre todas as possibilidades de caminho, construindo uma árvore. De tal maneira, o algoritmo realiza uma busca em profundidade na árvore.
+Como forma de otimização, sempre antes de explorar um ramo da árvore, verifico se a distancia acumulada já passou a menos distancia que tenho. Com isso pode ser deixado de explorar diversos ramos da árvore.
 ````c
 void traveling_salesman( tour path, int k, int ncities, distance_table t_distance,
                          distance aggregate, tour better_path, distance *low_distance)
@@ -98,3 +88,5 @@ void traveling_salesman( tour path, int k, int ncities, distance_table t_distanc
 ````c
 traveling_salesman(path,1,ncities, t_distance, 0, better_path, &low_distance);
 ````
+
+#### Paralelo com OPENMP
