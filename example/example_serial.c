@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <string.h>
 
-#define INIFINITO 999999
+#define INFINITO 999999
 
 void print_matriz(int **m, int n){
 	int i,j;
@@ -17,12 +17,12 @@ void print_matriz(int **m, int n){
 
 void print(int v[], int N)
 {
-  int i = 0;
-  for(i = 0; i < N; i++)
-  {
-    printf("%d ", v[i]);
-  }
-  printf("\n");
+	int i = 0;
+	for(i = 0; i < N; i++)
+	{
+		printf("%d ", v[i]);
+	}
+	printf("\n");
 }
 
 int **le_entrada(int n) {
@@ -41,51 +41,45 @@ int **le_entrada(int n) {
 
 void troca( int* vetor, int p1, int p2)
 {
-   int tmp;
-   tmp = vetor[p1]; 
-   vetor[p1] = vetor[p2]; 
-   vetor[p2] = tmp;
+	int tmp;
+	tmp = vetor[p1];
+	vetor[p1] = vetor[p2];
+	vetor[p2] = tmp;
 }
 
-int recursivo( int* vetor, int k, int ncidades, int **peso, int acumulado, int *melhor_caminho, int menorPeso)
+void recursivo( int* vetor, int k, int ncidades, int **peso, int acumulado, int *melhor_caminho, int *menorPeso)
 {
-   int i;
+	int i;
 
-   for( i = 0; i < k; i++)
-   	printf("\t");
-   printf("%d - %d\n", vetor[k], acumulado);
+	if (k == ncidades) {
+		acumulado += peso[vetor[k-1]][vetor[0]];
+		if ( *menorPeso > acumulado ) {
+			*menorPeso = acumulado;
+			memcpy(melhor_caminho, vetor, sizeof(int)*ncidades);
+		}
 
-   if (k == ncidades) {
-   		acumulado += peso[vetor[k-1]][vetor[0]];
-   		if ( menorPeso > acumulado ) {
-   			menorPeso = acumulado;
-   			memcpy(melhor_caminho, vetor, sizeof(int)*ncidades);
-   		}
-   		
-		return menorPeso;
-   
-   } else {
-      acumulado += peso[vetor[k-1]][vetor[k]];	
-      for (i = k; i < ncidades; i++) {
-         troca( vetor, k, i);
-         menorPeso = recursivo( vetor, k + 1,ncidades, peso, acumulado, melhor_caminho, menorPeso);
-         troca( vetor, i, k);
-      }
-      return menorPeso;
-   }
+	} else {
+		int acumulado2;
+		for (i = k; i < ncidades; i++) {
+			troca( vetor, k, i);
+			acumulado2 = acumulado + peso[vetor[k-1]][vetor[k]];
+			recursivo( vetor, k + 1,ncidades, peso, acumulado2, melhor_caminho, menorPeso);
+			troca( vetor, i, k);
+		}
+	}
 }
 
 int main( int argc, char *argv[])
-{	
-	int cidade_inicial = 0, ncidades = 0;
+{
+	int cidade_inicial = 0, ncidades = 0, menorPeso = INFINITO;
 	int j;
 	int *caminho, *melhor_caminho;
 
 	char a;
 	while((a = getopt(argc, argv, "n:s:")) != -1) {
 		switch(a) {
-		case 'n': ncidades 			= atoi(optarg); break;
-		case 's': cidade_inicial 	= atoi(optarg); break;
+			case 'n': ncidades 			= atoi(optarg); break;
+			case 's': cidade_inicial 	= atoi(optarg); break;
 		}
 	}
 
@@ -99,7 +93,8 @@ int main( int argc, char *argv[])
 
 	int **peso = le_entrada(ncidades);
 	print_matriz(peso, ncidades);
-	int menorPeso = recursivo(caminho,1,ncidades, peso, 0, melhor_caminho, INIFINITO);
+
+	recursivo(caminho,1,ncidades, peso, 0, melhor_caminho, &menorPeso);
 
 	printf("caminho resposta: [ ");
 	for(j = 0; j < ncidades; j++) {
