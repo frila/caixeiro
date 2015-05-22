@@ -19,6 +19,16 @@ distance_table rd_distance(int ncities){
     return vector;
 }
 
+void pt_betterpath(tour t, city start_city, int ncities, distance low_distance){
+    int j;
+    printf("caminho resposta: [ ");
+    for(j = 0; j < ncities; j++) {
+        printf("%d -> ", better_path[j]);
+    }
+    printf("%d ]\n", start_city);
+    printf("menor distancia %d\n", low_distance);
+}
+
 
 void get_input(int argc, char* argv[], int* ncities, int* start_city) {
 	char a;
