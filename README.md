@@ -20,9 +20,16 @@ Esse arquivo define um tour e uma cidade
 Esse arquivo define **helpers** para serem usados em um tour
 
 ````c
-//Retorna true caso o tour p seja mais curto que a distância dist
+//initializes a new tour
+tour create_tour(int ncities);
+
+//returns true if the tour t is shorter than
+//a distance indicated by dist 
 int is_shtr(tour t, int dist);
 
-//Define a cidade inicial de um tour
-void define_strt(tour t, city c);
+//defines the starter point of a tour
+void strt_point(tour t, city c);
+
+//defines a new tour changing the order of two cities
+void swap_cities(tour* t, city c1, city c2);
 ````
