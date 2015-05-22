@@ -7,9 +7,13 @@ A API implementa alguns métodos para resolver o problema do caixeiro viajante
 ### Compilando
 Para compilar o projeto faça, primeiramente download do projeto, extraia-o e vá para raíz do projeto e faça
 ````sh
-    mkdir bin
-    make clean
-    make
+$ mkdir bin
+````
+````sh
+$ make clean
+````
+````sh
+$ make
 ````
 
 ### Funções
