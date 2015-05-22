@@ -4,20 +4,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define tour int*
-#define city int
+typedef int* tour;
+typedef int city;
 
-//initializes a new tour
+//inicializa um tour
 tour create_tour(int ncities);
 
-//returns true if the tour t is shorter than
-//a distance indicated by dist 
-int is_shtr(tour t, int dist);
+//popula um tour pre-definido com cidades
+void populate_tour(tour t, int ncities);
 
-//defines the starter point of a tour
-void strt_point(tour t, city c);
+//retorna true se a distancia total do
+//tour t for menor que dist
+int is_shoter(tour t, int dist);
 
-//defines a new tour changing the order of two cities
-void swap_cities(tour* t, city c1, city c2);
+//define a cidade inicial de um tour
+void start_point(tour t, city c);
+
+//inverte a posição de duas cidades no tour
+void swap_cities(tour t, int c1, int c2);
 
 #endif
