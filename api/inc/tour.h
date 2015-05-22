@@ -6,7 +6,8 @@
 
 typedef int* tour;
 typedef int city;
-typedef int** distance;
+typedef int distance;
+typedef int** distance_table;
 
 //inicializa um tour
 tour create_tour(int ncities);
@@ -23,5 +24,7 @@ int is_shoter(tour t, int dist);
 
 //inverte a posição de duas cidades no tour
 void swap_cities(tour t, int c1, int c2);
+
+
 
 #endif

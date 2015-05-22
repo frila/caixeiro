@@ -8,7 +8,7 @@
 #include "tour.h"
 
 // Lê as distancias entre as cidades da entrada padrão
-distance rd_distance(int ncities);
+distance_table rd_distance(int ncities);
 
 
 #endif //CAIXEIRO_RDWT_H
