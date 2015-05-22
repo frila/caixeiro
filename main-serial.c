@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
     distance_table t_distance;
     tour path, better_path;
 
-    get_input(argc, argv, &ncities, &start_city);
+    get_input(argc, argv, &ncities, &start_city, NULL);
 
     path = create_tour(ncities);
 
