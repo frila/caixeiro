@@ -24,11 +24,14 @@ int main(int argc, char *argv[]) {
     tour better_tour = create_tour(ncities);
 
     //executando o algoritmo de permutação e comparando os pesos dos caminhos
+    //parallel for
 	for(i = 1; i < ncities; i++) {
 		for(j = 1; j < ncities; j++) { 
             if(j != ncities - 1) {
+                //rank
                 swap_cities(t, j, j+1);
             } else {
+                //rank
                 swap_cities(t, j, 1);
             }
         }
@@ -36,6 +39,7 @@ int main(int argc, char *argv[]) {
         distance sh;
         if((sh = is_shorter(t, distances, ncities, shorter_distance))) {
             shorter_distance = sh;
+            //rank
             memcpy(better_tour, t, sizeof(city)*ncities);
         }
     }
