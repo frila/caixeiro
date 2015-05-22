@@ -4,6 +4,14 @@
 
 A API implementa alguns métodos para resolver o problema do caixeiro viajante
 
+### Compilando
+Para compilar o projeto faça, primeiramente download do projeto, extraia-o e vá para raíz do projeto e faça
+````sh
+    mkdir bin
+    make clean
+    make
+````
+
 ### Funções
 
 Temos dois arquivos que definem alguns **helpers** para darem suporte aos algoritmos
