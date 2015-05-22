@@ -5,14 +5,13 @@
 
 int main(int argc, char *argv[]) {
     //definindo variáveis auxiliares
-    int ncities, start_city;
+    int ncities, nthread, i, j;
+    city start_city;
     distance_table distances;
     distance shorter_distance = INF;
-    
-    int i, j;
 
     //lendo input: número de cidades e cidade inicial
-    get_input(argc, argv, &ncities, &start_city);
+    get_input(argc, argv, &ncities, &start_city, &nthread);
     //lendo input: matriz de distancias
     distances = rd_distance(ncities);
 
