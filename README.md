@@ -114,7 +114,7 @@ $ bin/caixeiro-serial -n 4 -s 0 < ../example/teste1.input
 ````
 Onde **n** é o número de cidades e **s** é a cidade inicial. Lembrando que 0 <= s < n
 
-**Serial**
+**Paralelo com OPENMP**
 ````sh
 $ bin/caixeiro-parallel -n 4 -s 0 -t 4 < ../example/teste1.input
 ````
