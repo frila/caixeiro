@@ -37,6 +37,12 @@ void pt_betterpath(tour t, city start_city, int ncities, distance low_distance){
 
 void get_input(int argc, char* argv[], int* ncities, city* start_city, int *nthreads) {
 	char a;
+
+    // Atribuo automaticamente um valor invalido para nthreads caso ela nao seja nula
+    if ( nthreads ){
+        *nthreads = -1;
+    }
+
 	while((a = getopt(argc, argv, "n:s:t:")) != -1) {
 		switch(a) {
 		case 'n': *ncities 		= atoi(optarg); break;
@@ -45,13 +51,13 @@ void get_input(int argc, char* argv[], int* ncities, city* start_city, int *nthr
 		}
 	}
 
-    if ( start_city < 0 || start_city >= ncities ){
+    if ( *start_city < 0 || *start_city >= *ncities ){
         perror("Número da cidade inicial inválido");
         exit(1);
     }
 
     if ( nthreads ){
-        if ( nthreads < 0 || nthreads >= ncities ){
+        if ( *nthreads < 0 || *nthreads >= *ncities ){
             perror("Número de threads inválido");
             exit(1);
         }
