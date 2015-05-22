@@ -102,3 +102,20 @@ traveling_salesman(path,1,ncities, t_distance, 0, better_path, &low_distance);
 ````
 
 #### Paralelo com OPENMP
+
+
+### Invocando os programas
+
+Para executar os programas façamos:
+
+**Serial**
+````sh
+$ bin/caixeiro-serial -n 4 -s 0 < ../example/teste1.input
+````
+Onde **n** é o número de cidades e **s** é a cidade inicial. Lembrando que 0 <= s < n
+
+**Serial**
+````sh
+$ bin/caixeiro-parallel -n 4 -s 0 -t 4 < ../example/teste1.input
+````
+Onde **n** é o número de cidades, **s** é a cidade inicial e **t** é o numero de threads. Lembrando que 0 <= s,t < n
