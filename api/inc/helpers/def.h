@@ -5,8 +5,10 @@
 #ifndef CAIXEIRO_DEF_H
 #define CAIXEIRO_DEF_H
 
+#include <limits.h>
+
 #ifndef INF
-#define INF 999999
+#define INF INT_MAX
 #endif
 
 #endif //CAIXEIRO_DEF_H
