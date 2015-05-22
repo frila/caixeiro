@@ -7,12 +7,17 @@ SRC=api/src
 OBJ=obj
 BIN=bin
 
-NAME=caixeiro.bin
+NAME=caixeiro
 
-OBJS=$(OBJ)/tour.o $(OBJ)/main-serial.o $(OBJ)/main-parallel.o $(OBJ)/rdwt.o
+OBJS=$(OBJ)/tour.o $(OBJ)/rdwt.o
 
-all: $(OBJS)
-	$(CC) -o $(BIN)/$(NAME) $(OBJS) -I$(INC) $(FLAGS)
+OBJS_PAR=$(OBJS) $(OBJ)/main-parallel.o
+OBJS_SERIAL=$(OBJS) $(OBJ)/main-serial.o
+
+all: $(OBJS_SERIAL) $(OBJS_PAR)
+	#$(CC) -o $(BIN)/$(NAME) $(OBJS) -I$(INC) $(FLAGS)
+	$(CC) -o $(BIN)/$(NAME)-serial $(OBJS_SERIAL) -I$(INC) $(FLAGS)
+	$(CC) -o $(BIN)/$(NAME)-parallel $(OBJS_PAR) -I$(INC) $(FLAGS)
 
 $(OBJ)/main-parallel.o: main-parallel.c
 	$(CC) -o $(OBJ)/main-parallel.o -c main-parallel.c -I$(INC) $(FLAGS)
@@ -28,5 +33,5 @@ $(OBJ)/rdwt.o: $(SRC)/helpers/rdwt.c
 
 
 clear:
-	rm -rf $(OBJ) $(BIN)/$(NAME)
+	rm -rf $(OBJ) $(BIN)/*
 	mkdir $(OBJ) 
