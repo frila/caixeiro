@@ -25,6 +25,7 @@ int is_shoter(tour t, int dist);
 //inverte a posição de duas cidades no tour
 void swap_cities(tour t, int c1, int c2);
 
-
+//Busca a distancia entre duas cidades
+distance get_distance(distance_table d, city c1, city c2);
 
 #endif

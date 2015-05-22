@@ -29,3 +29,7 @@ void swap_cities(tour t, city c1, city c2) {
 	t[c1] = t[c2];
 	t[c2] = tmp; 
 }
+
+distance get_distance(distance_table d, city c1, city c2){
+	return d[c1][c2];
+}
