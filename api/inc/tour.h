@@ -7,7 +7,7 @@
 typedef int* tour;
 typedef int city;
 typedef int distance;
-typedef int** distance_table;
+typedef distance** distance_table;
 
 //inicializa um tour
 tour create_tour(int ncities);
