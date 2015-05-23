@@ -19,7 +19,7 @@ void traveling_salesman(tour* path, int k, int ncities, distance_table t_distanc
     } else {
         distance aggregate_local;
 
-        #pragma omp parallel for
+        #pragma omp parallel for num_threads(nthreads)
         for (i = k; i < ncities; i++) {
             int rank = omp_get_thread_num();
             swap_cities(path[rank], k, i);
