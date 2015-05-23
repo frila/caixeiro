@@ -1,4 +1,4 @@
-CC=gcc
+CC=gcc -g -fopenmp
 
 FLAGS=-Wall
 
@@ -33,5 +33,5 @@ $(OBJ)/rdwt.o: $(SRC)/helpers/rdwt.c
 
 
 clear:
-	rm -rf $(OBJ) $(BIN)/*
+	rm -rf $(OBJ) $(BIN)/caixeiro-parallel $(BIN)/caixeiro-serial
 	mkdir $(OBJ) 
