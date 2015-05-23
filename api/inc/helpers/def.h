@@ -8,7 +8,7 @@
 #include <limits.h>
 
 #ifndef INF
-#define INF 9999999999
+#define INF 999999
 #endif
 
 #endif //CAIXEIRO_DEF_H
