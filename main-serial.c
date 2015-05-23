@@ -49,9 +49,14 @@ int main(int argc, char* argv[]){
 
     t_distance = rd_distance(ncities);
 
+    double time_ini,time_end;
+    
+    GET_TIME(time_ini);
     traveling_salesman(path,1,ncities, t_distance, 0, better_path, &low_distance);
+    GET_TIME(time_end);
 
     pt_betterpath(better_path, start_city, ncities, low_distance);
+    printf("tempo de execução: %0.12lf\n", time_end - time_ini);
 
     return 0;
 }
