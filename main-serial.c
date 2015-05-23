@@ -34,6 +34,7 @@ int main(int argc, char* argv[]){
     city start_city;
     int ncities = 0;
     distance low_distance = INF;
+
     distance_table t_distance;
     tour path, better_path;
 
@@ -48,6 +49,15 @@ int main(int argc, char* argv[]){
     start_point(path, start_city);
 
     t_distance = rd_distance(ncities);
+
+    int i,j;
+    for(i = 0; i < ncities; i++){
+
+        for(j = 0; j < ncities; j++){
+            printf("%d\n", t_distance[i][j]);
+        }
+        printf("\n");
+    }
 
     double time_ini,time_end;
     
